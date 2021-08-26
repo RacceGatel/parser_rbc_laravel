@@ -40,12 +40,9 @@ class startRbcParse extends Command
      */
     public function handle()
     {
-        //dispatch((new ProcessParseNews())->onQueue('parsing'));
+        (new ParserModule())->loadContent();
 
-        $cont = (new ParserModule())->getContent();
-
-
-        return 'started';
+        print_r('once parse started');
     }
 
 }

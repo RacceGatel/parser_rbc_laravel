@@ -40,7 +40,7 @@ class ParserModule
     }
 
     /**
-     * Get content from xml.
+     * Load content from parser.
      *
      *
      * @return void
@@ -68,13 +68,13 @@ class ParserModule
                 }
 
                 count($img_ar) > 0 ? $news->image = $img_ar : null;
-                //isset($parse_news->enclosure['url']) ? $news->image = $parse_news->enclosure['url'] : null;
+
                 $news->timestamps = false;
 
                 $news->save();
             } catch (\Exception $e)
             {
-
+                //ignore unique exceptions
             }
         }
     }
