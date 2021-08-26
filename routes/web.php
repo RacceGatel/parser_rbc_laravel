@@ -25,7 +25,9 @@ Route::post('/parser/stop', 'App\Http\Controllers\ParsenewsController@stop');
 
 Route::post('/parser/restart', 'App\Http\Controllers\ParsenewsController@restart');
 
-Route::get('/stop', 'App\Http\Controllers\ParsenewsController@stop');
+Route::get('/parser/{any?}', function () {
+    return abort(404);
+})->where('any', '.*');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('admin');
 

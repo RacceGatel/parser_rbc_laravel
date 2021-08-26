@@ -12,13 +12,24 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Queue;
 
-class ParsenewsController extends Controller
+class ParseNewsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+
     protected $delay_time = 15;
 
-
-    public function start(Request $request)
+    public function start()
     {
+        Cache::store('database')->forever('parsing_delay_time', $this->delay_time);
 
         $key = Cache::store('database')->get('parsing_key_lock');
 
@@ -40,6 +51,8 @@ class ParsenewsController extends Controller
 
     public function restart()
     {
+
+        Cache::store('database')->forever('parsing_delay_time', $this->delay_time);
 
         $key = Cache::store('database')->get('parsing_key_lock');
 

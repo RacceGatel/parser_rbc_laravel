@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\ParsenewsController;
+use App\Http\Controllers\ParseNewsController;
 use App\Jobs\ProcessParseNews;
 use App\ParserModule;
 use Illuminate\Console\Command;
